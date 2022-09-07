@@ -1,0 +1,6 @@
+.popupInfo {
+  display:block;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+}

@@ -1,0 +1,16 @@
+.popupAvatar__heading {
+  margin: 34px 64px 41px 36px;
+  font-family: Inter, Georgia, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@media screen and (max-width: 602px) {
+  .popupAvatar__heading {
+    margin: 25px auto 70px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

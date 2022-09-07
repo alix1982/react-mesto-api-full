@@ -1,0 +1,10 @@
+.auth__buttonSubmit_disable {
+    color: #000000;
+    opacity: 0.2;
+    background-color: #ffffff;
+  }
+    
+  .auth__buttonSubmit_disable:hover {
+    cursor: default;
+    opacity: 0.2;
+  }

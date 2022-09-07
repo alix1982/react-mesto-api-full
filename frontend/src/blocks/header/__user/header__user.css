@@ -1,0 +1,7 @@
+.header__user {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }

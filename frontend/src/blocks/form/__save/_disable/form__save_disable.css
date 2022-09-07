@@ -1,0 +1,12 @@
+.form__save_disable {
+  color: #000000;
+  opacity: 0.2;
+  background-color: #ffffff;
+}
+  
+.form__save_disable:hover {
+  color: #000000;
+  opacity: 0.2;
+  background-color: #ffffff;
+  cursor: default;
+}

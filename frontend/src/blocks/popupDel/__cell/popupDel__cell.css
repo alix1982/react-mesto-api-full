@@ -1,0 +1,27 @@
+.popupDel__cell {
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: absolute;
+  top: calc(45.7vh - 90px);
+  left: calc(50vw - 215px);
+  width: 430px;
+  min-height: 181px;
+}
+
+@media screen and (max-width: 602px) {
+  .popupDel__cell {
+    width: 282px;
+    min-height: 170px;
+    /* top: calc(40.5vh - 161px); */
+    left: calc(50vw - 142px);
+  }
+}
+
+/* @media screen and (min-width: 1500px) {
+  .popupDel__cell {
+    top: 250px;
+  }
+} */

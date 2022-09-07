@@ -1,0 +1,34 @@
+.element__list {
+  position: relative;
+  width: 282px;
+  margin-top: 20px;
+  margin-right: 17px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.element__list:nth-child(3n) {
+  margin-right: 0px;
+}
+
+@media screen and (max-width: 917px) {
+  .element__list:nth-child(3n) {
+    margin-right: 17px;
+  }
+
+  .element__list:nth-child(2n) {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 618px) {
+  .element__list:nth-child(3n) {
+    margin-right: 0px;
+  }
+  
+  .element__list {
+    margin-right: 0px;
+  }
+}

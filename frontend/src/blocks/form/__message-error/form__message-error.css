@@ -1,0 +1,11 @@
+.form__message-error {
+    width: 358px;
+    min-height: 30px;
+    margin: 0 auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+  }

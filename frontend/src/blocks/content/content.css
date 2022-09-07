@@ -1,0 +1,12 @@
+.content {
+  color: #ffffff;
+  min-width: 282px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 918px) {
+  .content {
+    margin: auto 19px;
+  }
+}

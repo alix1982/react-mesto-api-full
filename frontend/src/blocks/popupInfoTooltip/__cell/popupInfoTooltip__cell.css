@@ -1,0 +1,28 @@
+.popupInfoTooltip__cell {
+    position: absolute;
+    top: calc(41.7vh - 165px);
+    left: calc(50vw - 215px);
+    width: 430px;
+    min-height: 330px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 602px) {
+    .popupInfoTooltip__cell {
+      width: 282px;
+      min-height: 322px;
+      top: calc(40.5vh - 161px);
+      left: calc(50vw - 142px);
+    }
+  }
+  
+  @media screen and (min-width: 1500px) {
+    .popupInfoTooltip__cell {
+      top: 250px;
+    }
+  }

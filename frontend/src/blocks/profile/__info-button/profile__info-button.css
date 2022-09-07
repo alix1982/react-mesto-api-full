@@ -1,0 +1,32 @@
+.profile__info-button {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-self: end;
+  align-self: flex-end;
+  margin: 0 8px 8px 18px;
+  width: 24px;
+  height: 24px;
+  transition: 0.3s;
+  background-image: url('../../../images/info-button.svg');
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #FFFFFF;
+}
+
+.profile__info-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 602px) {
+  .profile__info-button {
+    justify-self: center;
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+}
+
+

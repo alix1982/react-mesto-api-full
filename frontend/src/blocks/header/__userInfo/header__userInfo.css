@@ -1,0 +1,13 @@
+.header__userInfo {
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-left: 24px;
+    font-family: Inter, Georgia, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }

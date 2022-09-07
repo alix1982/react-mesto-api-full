@@ -1,0 +1,9 @@
+.popupInfoTooltip__iconNotSuccessfully {
+    width: 120px;
+    min-height: 120px;
+    background-image: url('../../../images/notSuccessfully.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 60px;
+    background-size: 120px;
+  }

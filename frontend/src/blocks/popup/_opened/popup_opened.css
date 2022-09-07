@@ -1,0 +1,14 @@
+.popup_opened {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 1s linear;
+  z-index: 10;
+}
+
+
