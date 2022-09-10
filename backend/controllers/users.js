@@ -13,6 +13,7 @@ const allowedCors = [
   'http://praktikum.tk',
   'localhost:3000',
 ];
+const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 module.exports.createUser = (req, res, next) => {
   const { origin } = req.headers;
@@ -21,7 +22,6 @@ module.exports.createUser = (req, res, next) => {
   }
 
   const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
 
   if (method === 'OPTIONS') {
