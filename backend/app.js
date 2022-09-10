@@ -2,7 +2,7 @@ const express = require('express');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const mongoose = require('mongoose');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
