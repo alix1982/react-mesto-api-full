@@ -8,35 +8,45 @@ const ConflictUser = require('../errors/conflictUser');
 const NoAuthErr = require('../errors/noAuthErr');
 const DefaultErrorStatus = require('../errors/defaultErrorStatus');
 
+const allowedCors = [
+  'https://alix576.nomorepartiesxyz.ru',
+  'http://praktikum.tk',
+  'localhost:3000',
+];
+
 module.exports.createUser = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-    .then((hash) => User.create({
-      name: req.body.name,
-      about: req.body.about,
-      avatar: req.body.avatar,
-      email: req.body.email,
-      password: hash,
-    }))
-    .then((user) => {
-      const userRes = {
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-      };
-      res.send({ data: userRes });
-    })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new IncorrectDataErrorStatus('Ошибка валидации'));
-        return;
-      }
-      if (err.code === 11000) {
-        next(new ConflictUser('Такой пользователь уже существует'));
-        return;
-      }
-      next(new DefaultErrorStatus('Произошла ошибка'));
-    });
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    bcrypt.hash(req.body.password, 10)
+      .then((hash) => User.create({
+        name: req.body.name,
+        about: req.body.about,
+        avatar: req.body.avatar,
+        email: req.body.email,
+        password: hash,
+      }))
+      .then((user) => {
+        const userRes = {
+          name: user.name,
+          about: user.about,
+          avatar: user.avatar,
+          email: user.email,
+        };
+        res.send({ data: userRes });
+      })
+      .catch((err) => {
+        if (err.name === 'ValidationError') {
+          next(new IncorrectDataErrorStatus('Ошибка валидации'));
+          return;
+        }
+        if (err.code === 11000) {
+          next(new ConflictUser('Такой пользователь уже существует'));
+          return;
+        }
+        next(new DefaultErrorStatus('Произошла ошибка'));
+      });
+  }
+  next();
 };
 
 module.exports.getUsers = (req, res, next) => {
