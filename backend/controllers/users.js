@@ -17,36 +17,48 @@ const allowedCors = [
 module.exports.createUser = (req, res, next) => {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
-    bcrypt.hash(req.body.password, 10)
-      .then((hash) => User.create({
-        name: req.body.name,
-        about: req.body.about,
-        avatar: req.body.avatar,
-        email: req.body.email,
-        password: hash,
-      }))
-      .then((user) => {
-        const userRes = {
-          name: user.name,
-          about: user.about,
-          avatar: user.avatar,
-          email: user.email,
-        };
-        res.send({ data: userRes });
-      })
-      .catch((err) => {
-        if (err.name === 'ValidationError') {
-          next(new IncorrectDataErrorStatus('Ошибка валидации'));
-          return;
-        }
-        if (err.code === 11000) {
-          next(new ConflictUser('Такой пользователь уже существует'));
-          return;
-        }
-        next(new DefaultErrorStatus('Произошла ошибка'));
-      });
+    res.header('Access-Control-Allow-Origin', origin);
   }
-  next();
+
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+
+  bcrypt.hash(req.body.password, 10)
+    .then((hash) => User.create({
+      name: req.body.name,
+      about: req.body.about,
+      avatar: req.body.avatar,
+      email: req.body.email,
+      password: hash,
+    }))
+    .then((user) => {
+      const userRes = {
+        name: user.name,
+        about: user.about,
+        avatar: user.avatar,
+        email: user.email,
+      };
+      res.send({ data: userRes });
+    })
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new IncorrectDataErrorStatus('Ошибка валидации'));
+        return;
+      }
+      if (err.code === 11000) {
+        next(new ConflictUser('Такой пользователь уже существует'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка'));
+    });
+  return 1;
 };
 
 module.exports.getUsers = (req, res, next) => {
