@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-const BASE_URL = 'https://auth.nomoreparties.co';
+const BASE_URL = 'http://alix576.nomorepartiesxyz.ru';
 
 export function useApiAuth () {
   let navigate = useNavigate();
