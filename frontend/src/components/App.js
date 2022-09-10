@@ -167,6 +167,7 @@ function App() {
   function apiRegister (password, email) {
     register(password, email, '/signup', '/sign-up', setIsRegisterSuccessOpen, setIsRegisterSuccess)
       .then((res) => {
+        console.log(res)
         if (!(res===undefined)) {
           setIsRegisterSuccessOpen(true);
           setIsRegisterSuccess({

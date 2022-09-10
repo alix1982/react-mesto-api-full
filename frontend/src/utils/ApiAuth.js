@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-const BASE_URL = 'http://alix576.nomorepartiesxyz.ru';
+// const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'http://api.alix576.nomorepartiesxyz.ru';
 
 export function useApiAuth () {
   let navigate = useNavigate();
@@ -16,6 +17,7 @@ export function useApiAuth () {
       })
     })
       .then((response) => {
+        console.log(response)
         if (response.ok) {return response.json()}
         else {
           setIsRegisterSuccess({
