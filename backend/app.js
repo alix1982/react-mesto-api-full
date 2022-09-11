@@ -10,6 +10,7 @@ const errorRouter = require('./routes/errors');
 const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 const app = express();
 
@@ -18,6 +19,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 app.use(express.json());
 
 app.use(requestLogger);
+
+app.use(cors);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({

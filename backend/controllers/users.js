@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const express = require('express');
+// const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -8,12 +8,11 @@ const NoDateErrorStatus = require('../errors/noDateErrorStatus');
 const ConflictUser = require('../errors/conflictUser');
 const NoAuthErr = require('../errors/noAuthErr');
 const DefaultErrorStatus = require('../errors/defaultErrorStatus');
-const cors = require('../middlewares/cors');
+// const cors = require('../middlewares/cors');
 
-const app = express();
+// const app = express();
 
 module.exports.createUser = (req, res, next) => {
-  app.use(cors);
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       name: req.body.name,
