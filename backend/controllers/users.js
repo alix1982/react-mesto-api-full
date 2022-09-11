@@ -10,6 +10,7 @@ const DefaultErrorStatus = require('../errors/defaultErrorStatus');
 
 const allowedCors = [
   'https://alix576.nomorepartiesxyz.ru',
+  'https://api.alix576.nomorepartiesxyz.ru',
   'http://praktikum.tk',
   'localhost:3000',
 ];
