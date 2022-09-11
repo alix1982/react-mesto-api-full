@@ -24,7 +24,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
     "dev": "nodemon app.js",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "deploy": "npm run build && scp -r ./build/* mesto@84.201.157.7:/home/mesto/react-mesto-api-full/backend"
+
   },
   "repository": {
     "type": "git",
