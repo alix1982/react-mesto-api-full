@@ -28,7 +28,7 @@ module.exports.createUser = (req, res, next) => {
         avatar: user.avatar,
         email: user.email,
       };
-      res.send({ data: userRes });
+      res.send(userRes);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -46,14 +46,14 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
 module.exports.getUserMe = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -64,7 +64,7 @@ module.exports.getUserId = (req, res, next) => {
       if (user === null) {
         throw new NoDateErrorStatus('Пользователь не найден!');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -86,7 +86,7 @@ module.exports.updateUser = (req, res, next) => {
       if (user === null) {
         throw new NoDateErrorStatus('Пользователь не найден!');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -108,7 +108,7 @@ module.exports.updateAvatar = (req, res, next) => {
       if (user === null) {
         throw new NoDateErrorStatus('Пользователь не найден!');
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
