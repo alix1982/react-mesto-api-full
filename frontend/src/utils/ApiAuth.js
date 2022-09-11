@@ -17,8 +17,6 @@ export function useApiAuth () {
       })
     })
       .then((response) => {
-        console.log(BASE_URL)
-        console.log(response)
         if (response.ok) {return response.json()}
         else {
           setIsRegisterSuccess({
