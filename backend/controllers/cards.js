@@ -39,7 +39,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
       return card.remove();
     })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new IncorrectDataErrorStatus('Некорректный id'));
@@ -67,7 +67,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card === null) {
         throw new NoDateErrorStatus('Карточка не найдена');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -92,7 +92,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card === null) {
         throw new NoDateErrorStatus('Карточка не найдена');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
