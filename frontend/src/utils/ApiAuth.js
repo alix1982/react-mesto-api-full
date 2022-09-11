@@ -30,9 +30,9 @@ export function useApiAuth () {
         return Promise.reject(`Ошибка: ${response.status}`);
       })
   }
-
+  // https://auth.nomoreparties.co/users/me
   const checkToken = () => {
-    return fetch ('api.alix576.nomorepartiesxyz.ru', {
+    return fetch ('http://api.alix576.nomorepartiesxyz.ru', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
