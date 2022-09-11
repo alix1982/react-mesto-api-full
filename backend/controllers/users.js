@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -7,33 +8,12 @@ const NoDateErrorStatus = require('../errors/noDateErrorStatus');
 const ConflictUser = require('../errors/conflictUser');
 const NoAuthErr = require('../errors/noAuthErr');
 const DefaultErrorStatus = require('../errors/defaultErrorStatus');
+const cors = require('../middlewares/cors');
 
-const allowedCors = [
-  'https://alix576.nomorepartiesxyz.ru',
-  'https://alix576.nomorepartiesxyz.ru/sign-up',
-  'https://api.alix576.nomorepartiesxyz.ru',
-  'https://api.alix576.nomorepartiesxyz.ru/sign-up',
-  'https://mesto.nomoreparties.co/v1/cohort-42',
-  'http://praktikum.tk',
-  'localhost:3000',
-];
-const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+const app = express();
 
 module.exports.createUser = (req, res, next) => {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-
-  const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  console.log(requestHeaders);
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    return res.end();
-  }
-
+  app.use(cors);
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       name: req.body.name,
