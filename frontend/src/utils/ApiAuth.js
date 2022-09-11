@@ -17,6 +17,7 @@ export function useApiAuth () {
       })
     })
       .then((response) => {
+        console.log(BASE_URL);
         console.log(response)
         if (response.ok) {return response.json()}
         else {
@@ -32,7 +33,7 @@ export function useApiAuth () {
   }
   // https://auth.nomoreparties.co/users/me
   const checkToken = () => {
-    return fetch ('http://api.alix576.nomorepartiesxyz.ru/users/me', {
+    return fetch ('http://api.alix576.nomorepartiesxyz.ru', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,5 +43,3 @@ export function useApiAuth () {
   }
   return {register, checkToken}
 }
-
-  
