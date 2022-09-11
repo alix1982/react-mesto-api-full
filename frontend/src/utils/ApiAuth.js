@@ -31,7 +31,7 @@ export function useApiAuth () {
   }
   // https://auth.nomoreparties.co/users/me
   const checkToken = () => {
-    return fetch ('http://api.alix576.nomorepartiesxyz.ru', {
+    return fetch ('http://api.alix576.nomorepartiesxyz.ru/users/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

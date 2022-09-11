@@ -155,16 +155,12 @@ function App() {
   function apiLogin (password, email) {
     register(password, email, '/signin', '/sign-in', setIsRegisterSuccessOpen, setIsRegisterSuccess)
       .then((res) => {
+        console.log(localStorage.getItem('token'));
         if (!(res===undefined)) {
-          console.log(res);
-          console.log(res.token);
-
           localStorage.setItem('token', res.token);
           handleCheckToken();
           setUserEmail(email);
         }
-        console.log(res);
-
         return res;
       })
       .catch((err) => console.log(err));
