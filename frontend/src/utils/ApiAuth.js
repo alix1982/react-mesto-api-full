@@ -5,7 +5,9 @@ const BASE_URL = 'http://api.alix576.nomorepartiesxyz.ru';
 export function useApiAuth () {
   let navigate = useNavigate();
   function register (password, email, urlApi, urlRoute, setIsRegisterSuccessOpen, setIsRegisterSuccess) {
-    return fetch(`${BASE_URL}${urlApi}`, {
+    // return fetch(`${BASE_URL}${urlApi}`, {
+      return fetch('http://api.alix576.nomorepartiesxyz.ru/signup', {
+
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -32,7 +34,7 @@ export function useApiAuth () {
   }
   // https://auth.nomoreparties.co/users/me
   const checkToken = () => {
-    return fetch ('http://api.alix576.nomorepartiesxyz.ru', {
+    return fetch ('http://api.alix576.nomorepartiesxyz.ru/users/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
