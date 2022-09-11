@@ -5,9 +5,7 @@ const BASE_URL = 'http://api.alix576.nomorepartiesxyz.ru';
 export function useApiAuth () {
   let navigate = useNavigate();
   function register (password, email, urlApi, urlRoute, setIsRegisterSuccessOpen, setIsRegisterSuccess) {
-    // return fetch(`${BASE_URL}${urlApi}`, {
-      return fetch('http://api.alix576.nomorepartiesxyz.ru/signup', {
-
+    return fetch(`${BASE_URL}${urlApi}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
