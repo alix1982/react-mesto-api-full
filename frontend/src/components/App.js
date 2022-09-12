@@ -61,23 +61,31 @@ function App() {
   }
 
   function handleCheckToken () {
+    // console.log(localStorage.getItem('token'));
     checkToken () 
       .then((response) => {
         if (response.ok) {
           setLoggedIn(true);
+          // console.log(localStorage.getItem('token'));
           navigate("/");
           api.getUser ()
-            .then ((res) => {setCurrentUser(res)})
+            .then ((res) => {
+              setCurrentUser(res)
+            })
             .catch((err) => {console.log(err)});
           api.getCards ()
-            .then ((res) => {setCurrentCard(res)})
+            .then ((res) => {
+              console.log(res);
+              setCurrentCard(res);
+            })
             .catch((err) => {console.log(err)});
           return response.json()
         }
         return Promise.reject(`Ошибка: ${response.status}`);
       })
       .then((res) => {
-        setUserEmail(res.data.email)
+        // console.log(res);
+        setUserEmail(res.email)
         return res;
       })
       .catch((err) => console.log(err)); 
@@ -141,7 +149,7 @@ function App() {
       })
   }
   function handleCardLike (card) {
-    const isLiked = card.likes.some(like => like._id === currentUser._id);
+    const isLiked = card.likes.some(like => like === currentUser._id);
     api.getCounterLike (card._id, (!isLiked ? 'PUT' : 'DELETE'))
       .then((newCard) => {
         setCurrentCard(currentCard => {
@@ -155,9 +163,10 @@ function App() {
   function apiLogin (password, email) {
     register(password, email, '/signin', '/sign-in', setIsRegisterSuccessOpen, setIsRegisterSuccess)
       .then((res) => {
-        console.log(localStorage.getItem('token'));
+        // console.log(localStorage.getItem('token'));
         if (!(res===undefined)) {
           localStorage.setItem('token', res.token);
+          // console.log(localStorage.getItem('token'));
           handleCheckToken();
           setUserEmail(email);
         }
@@ -168,7 +177,6 @@ function App() {
   function apiRegister (password, email) {
     register(password, email, '/signup', '/sign-up', setIsRegisterSuccessOpen, setIsRegisterSuccess)
       .then((res) => {
-        console.log(res)
         if (!(res===undefined)) {
           setIsRegisterSuccessOpen(true);
           setIsRegisterSuccess({

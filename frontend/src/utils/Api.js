@@ -15,7 +15,10 @@ class Api {
   patchUserInfo = (inputList) => {
     return (fetch(`${this.url}/users/me`, {
       method: 'PATCH',
-      headers: this.heading,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: inputList.name,
         about: inputList.about,
@@ -29,7 +32,10 @@ class Api {
   postAddCard = (inputList) => {
     return (fetch(`${this.url}/cards`, {
       method: 'POST',
-      headers: this.heading,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: inputList.name,
         link: inputList.link
@@ -42,7 +48,10 @@ class Api {
   patchUserAvatar = (linkAvatar) => {
     return (fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.heading,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: linkAvatar,
       })
@@ -54,7 +63,10 @@ class Api {
   deleteCardDel = (itemId, method) => {
     return (fetch (`${this.url}/cards/${itemId}`, {
         method: method,
-        headers: this.heading,
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        },
       })
       .then(res => this._getStatus(res))
     )
@@ -63,7 +75,10 @@ class Api {
   getCounterLike = (itemId, method) => {
     return (fetch(`${this.url}/cards/${itemId}/likes`, {
       method: method,
-      headers: this.heading,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
       })
     })
@@ -74,16 +89,23 @@ class Api {
   getCards = () => {
     return (fetch(`${this.url}/cards`, {
       method: 'GET',
-      headers: this.heading
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
     })
       .then(res => this._getStatus(res))
-    ); 
+    );
   }
 
   getUser = () => {
     return (fetch(`${this.url}/users/me`, {
       method: 'GET',
-      headers: this.heading
+      // headers: this.heading,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
     })
       .then(res => this._getStatus(res))
     )
@@ -93,13 +115,17 @@ class Api {
 // https://mesto.nomoreparties.co/v1/cohort-42
 // `Bearer ${localStorage.getItem('token')}`
 // 99b7a38f-d2ab-46ce-b602-198a4e9299a5
+// heading: {
+//   authorization: `Bearer ${localStorage.getItem('token')}`,
+//   'Content-Type': 'application/json'
+// }
 const api = new Api (
   {
     url: 'http://api.alix576.nomorepartiesxyz.ru',
-    heading: {
-      authorization: `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json'
-    }
+    // heading: {
+    //   authorization: `Bearer ${localStorage.getItem('token')}`,
+    //   'Content-Type': 'application/json'
+    // }
   }
 );
 

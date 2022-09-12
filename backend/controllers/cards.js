@@ -21,7 +21,8 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.getCards = (req, res, next) => {
-  Card.find({ owner: req.user._id })
+  // Card.find({ owner: req.user._id })
+  Card.find({})
     .then((card) => {
       res.send(card);
     })

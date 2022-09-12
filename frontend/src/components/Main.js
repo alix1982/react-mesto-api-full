@@ -4,7 +4,7 @@ import {CurrentUserContext, currentUserContext} from '../contexts/CurrentUserCon
 
 function Main (props) {
   const userContext = useContext(CurrentUserContext);
-  console.log(props.onCards);
+  // console.log(props.onCards);
   return (
     <main className="content">
       <section className="profile" aria-label="профиль">

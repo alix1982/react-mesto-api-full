@@ -10,9 +10,13 @@ function Card (props) {
   function handleDeleteClick() {
     props.onCardDelete(props.card);
   }
-  const isOwn = props.card.owner._id === props.user._id;
+  // console.log(props.card.owner._id);
+  // console.log(props.user._id);
+  // console.log(props.card.likes);
+  // console.log(props.user._id);
+  const isOwn = props.card.owner === props.user._id;
   const buttonDeleteClassName = (`element__del ${isOwn && 'element__del_active'}`);
-  const isLiked = props.card.likes.some(like => like._id === props.user._id);
+  const isLiked = props.card.likes.some(like => like === props.user._id);
   const buttonLikeClassName = (`element__like ${isLiked && 'element__like_active'}`);
   
   return (
