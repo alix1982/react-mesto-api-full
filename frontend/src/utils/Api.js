@@ -111,10 +111,10 @@ class Api {
       .then(res => this._getStatus(res))
     )
   }
-  setJwt = (token) => {
-    this.heading.authorization = token;
-    // return localStorage.getItem('token');
-  }
+  // setJwt = (token) => {
+  //   this.heading.authorization = token;
+  //   // return localStorage.getItem('token');
+  // }
 }
 
 const api = new Api (
