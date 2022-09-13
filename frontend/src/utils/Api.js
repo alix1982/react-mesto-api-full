@@ -3,7 +3,6 @@ class Api {
   {
     this.url = url;
     this.heading = heading;
-    // this.h = this.heading.Api.setJwt(localStorage.getItem('token'));
   }
 
   _getStatus = (res) => {
@@ -14,16 +13,13 @@ class Api {
   };
 
   patchUserInfo = (inputList) => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
       body: JSON.stringify({
         name: inputList.name,
         about: inputList.about,
-        //avatar: inputList.linkAvatar,
       })
     })
       .then(res => this._getStatus(res))
@@ -31,12 +27,10 @@ class Api {
   }
 
   postAddCard = (inputList) => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
       body: JSON.stringify({
         name: inputList.name,
         link: inputList.link
@@ -47,12 +41,10 @@ class Api {
   };
 
   patchUserAvatar = (linkAvatar) => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
       body: JSON.stringify({
         avatar: linkAvatar,
       })
@@ -62,24 +54,20 @@ class Api {
   }
 
   deleteCardDel = (itemId, method) => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch (`${this.url}/cards/${itemId}`, {
         method: method,
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json'
-        },
+        headers: this.heading,
       })
       .then(res => this._getStatus(res))
     )
   }
 
   getCounterLike = (itemId, method) => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/cards/${itemId}/likes`, {
       method: method,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
       body: JSON.stringify({
       })
     })
@@ -88,33 +76,27 @@ class Api {
   }
 
   getCards = () => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/cards`, {
       method: 'GET',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
     })
       .then(res => this._getStatus(res))
     );
   }
 
   getUser = () => {
+    this._setJwt(localStorage.getItem('token'));
     return (fetch(`${this.url}/users/me`, {
       method: 'GET',
-      // headers: this.h,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this.heading,
     })
       .then(res => this._getStatus(res))
     )
   }
-  // setJwt = (token) => {
-  //   this.heading.authorization = token;
-  //   // return localStorage.getItem('token');
-  // }
+  _setJwt = (token) => {
+    this.heading.authorization = `Bearer ${token}`;
+  }
 }
 
 const api = new Api (
