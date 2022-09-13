@@ -61,30 +61,22 @@ function App() {
   }
 
   function handleCheckToken () {
-    // console.log(localStorage.getItem('token'));
     checkToken () 
       .then((response) => {
         if (response.ok) {
           setLoggedIn(true);
-          // console.log(localStorage.getItem('token'));
           navigate("/");
           api.getUser ()
-            .then ((res) => {
-              setCurrentUser(res)
-            })
+            .then ((res) => { setCurrentUser(res) })
             .catch((err) => {console.log(err)});
           api.getCards ()
-            .then ((res) => {
-              console.log(res);
-              setCurrentCard(res);
-            })
+            .then ((res) => { setCurrentCard(res) })
             .catch((err) => {console.log(err)});
           return response.json()
         }
         return Promise.reject(`Ошибка: ${response.status}`);
       })
       .then((res) => {
-        // console.log(res);
         setUserEmail(res.email)
         return res;
       })

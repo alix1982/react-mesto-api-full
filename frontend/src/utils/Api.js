@@ -2,7 +2,8 @@ class Api {
   constructor ({url, heading})
   {
     this.url = url;
-    this.heading = heading
+    this.heading = heading;
+    // this.h = this.heading.Api.setJwt(localStorage.getItem('token'));
   }
 
   _getStatus = (res) => {
@@ -101,7 +102,7 @@ class Api {
   getUser = () => {
     return (fetch(`${this.url}/users/me`, {
       method: 'GET',
-      // headers: this.heading,
+      // headers: this.h,
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
@@ -110,7 +111,23 @@ class Api {
       .then(res => this._getStatus(res))
     )
   }
+  setJwt = (token) => {
+    this.heading.authorization = token;
+    // return localStorage.getItem('token');
+  }
 }
+
+const api = new Api (
+  {
+    url: 'http://api.alix576.nomorepartiesxyz.ru',
+    heading: {
+      authorization: `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json'
+    }
+  }
+);
+export default api
+
 // http://api.alix576.nomorepartiesxyz.ru/
 // https://mesto.nomoreparties.co/v1/cohort-42
 // `Bearer ${localStorage.getItem('token')}`
@@ -119,14 +136,4 @@ class Api {
 //   authorization: `Bearer ${localStorage.getItem('token')}`,
 //   'Content-Type': 'application/json'
 // }
-const api = new Api (
-  {
-    url: 'http://api.alix576.nomorepartiesxyz.ru',
-    // heading: {
-    //   authorization: `Bearer ${localStorage.getItem('token')}`,
-    //   'Content-Type': 'application/json'
-    // }
-  }
-);
-
-export default api
+  // let token = localStorage.getItem('token')
