@@ -112,10 +112,4 @@ export default api
 
 // http://api.alix576.nomorepartiesxyz.ru/
 // https://mesto.nomoreparties.co/v1/cohort-42
-// `Bearer ${localStorage.getItem('token')}`
 // 99b7a38f-d2ab-46ce-b602-198a4e9299a5
-// heading: {
-//   authorization: `Bearer ${localStorage.getItem('token')}`,
-//   'Content-Type': 'application/json'
-// }
-  // let token = localStorage.getItem('token')
