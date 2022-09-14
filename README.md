@@ -10,6 +10,6 @@
 
 
 
-[Ссылка на проект на github](https://github.com/alix1982/react-mesto-api-full.git)
-[Публичная ссылка на проект](http://alix576.nomorepartiesxyz.ru/)
-[Ссылка для запросов api на поддомене](http://api.alix576.nomorepartiesxyz.ru/)
++ [Ссылка на проект на github](https://github.com/alix1982/react-mesto-api-full.git)
++ [Публичная ссылка на проект](http://alix576.nomorepartiesxyz.ru/)
++ [Ссылка для запросов api на поддомене](http://api.alix576.nomorepartiesxyz.ru/)
