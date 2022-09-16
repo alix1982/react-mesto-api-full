@@ -40,7 +40,6 @@ module.exports.createUser = (req, res, next) => {
       }
       next(new DefaultErrorStatus('Произошла ошибка'));
     });
-  return 1;
 };
 
 module.exports.getUsers = (req, res, next) => {
