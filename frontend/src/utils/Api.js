@@ -101,7 +101,7 @@ class Api {
 
 const api = new Api (
   {
-    url: 'https://api.alix576.nomorepartiesxyz.ru',
+    url: 'http://api.alix576.nomorepartiesxyz.ru',
     heading: {
       authorization: `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json'

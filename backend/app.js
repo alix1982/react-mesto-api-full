@@ -11,7 +11,7 @@ const errorRouter = require('./routes/errors');
 const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { linkRegulatoryExpression } = require('./utils/regulatoryExpression');
+const regulatoryExpression = require('./utils/regulatoryExpression');
 
 const cors = require('./middlewares/cors');
 
@@ -37,7 +37,7 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(linkRegulatoryExpression),
+    avatar: Joi.string().regex(regulatoryExpression.linkRegulatoryExpression),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),

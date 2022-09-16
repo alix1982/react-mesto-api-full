@@ -1,6 +1,4 @@
-module.exports.linkRegulatoryExpression = () => {
-  const regulatoryExpression = /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i;
-  return regulatoryExpression;
+module.exports.regulatoryExpression = {
+  linkRegulatoryExpression: /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i,
+  emailRegulatoryExpression: /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i,
 };
-
-module.exports.emailRegulatoryExpression = /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i;
