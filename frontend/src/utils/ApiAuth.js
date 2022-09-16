@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 // const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://api.alix576.nomorepartiesxyz.ru';
+const BASE_URL = 'http://api.alix576.nomorepartiesxyz.ru';
 
 export function useApiAuth () {
   let navigate = useNavigate();
@@ -31,7 +31,7 @@ export function useApiAuth () {
   }
   // https://auth.nomoreparties.co/users/me
   const checkToken = () => {
-    return fetch ('https://api.alix576.nomorepartiesxyz.ru/users/me', {
+    return fetch ('http://api.alix576.nomorepartiesxyz.ru/users/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
