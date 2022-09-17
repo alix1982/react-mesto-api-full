@@ -47,14 +47,14 @@ module.exports.deleteCard = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Некорректный id'));
         return;
       }
-      if (err.statusCode === 403) {
-        next(new ConflictId('Удаление не своей карточки'));
-        return;
-      }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Карточка не найдена'));
-        return;
-      }
+      // if (err.statusCode === 403) {
+      //   next(new ConflictId('Удаление не своей карточки'));
+      //   return;
+      // }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Карточка не найдена'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка удалениия'));
       next(err);
     });
@@ -77,10 +77,10 @@ module.exports.likeCard = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Некорректный id'));
         return;
       }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Карточка не найдена'));
-        return;
-      }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Карточка не найдена'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка лайка'));
       next(err);
     });
@@ -103,10 +103,10 @@ module.exports.dislikeCard = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Некорректный id'));
         return;
       }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Карточка не найдена'));
-        return;
-      }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Карточка не найдена'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка лайка'));
       next(err);
     });

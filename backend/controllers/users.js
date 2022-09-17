@@ -70,10 +70,10 @@ module.exports.getUserId = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Некорректный id'));
         return;
       }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Пользователь не найден!'));
-        return;
-      }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Пользователь не найден!'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка!'));
       next(err);
     });
@@ -93,10 +93,10 @@ module.exports.updateUser = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Ошибка валидации'));
         return;
       }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Пользователь не найден!'));
-        return;
-      }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Пользователь не найден!'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка!'));
       next(err);
     });
@@ -116,10 +116,10 @@ module.exports.updateAvatar = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Ошибка валидации'));
         return;
       }
-      if (err.statusCode === 404) {
-        next(new NoDateErrorStatus('Пользователь не найден!'));
-        return;
-      }
+      // if (err.statusCode === 404) {
+      //   next(new NoDateErrorStatus('Пользователь не найден!'));
+      //   return;
+      // }
       // next(new DefaultErrorStatus('Произошла ошибка!'));
       next(err);
     });
@@ -147,12 +147,12 @@ module.exports.login = (req, res, next) => {
           res.send({ token, message: 'Всё верно!' });
         });
     })
-    .catch((err) => {
-      if (err.statusCode === 401) {
-        next(new NoAuthErr('Неправильные почта или пароль'));
-        return;
-      }
-      // next(new DefaultErrorStatus('Произошла ошибка'));
-      next(err);
-    });
+    // .catch((err) => {
+    //   if (err.statusCode === 401) {
+    //     next(new NoAuthErr('Неправильные почта или пароль'));
+    //     return;
+    //   }
+    //   next(new DefaultErrorStatus('Произошла ошибка'));
+    // });
+    .catch(next);
 };
