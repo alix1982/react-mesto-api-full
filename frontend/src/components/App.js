@@ -13,7 +13,7 @@ import Login from './Login.js';
 import Register from './Register.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import InfoTooltip from './InfoTooltip.js';
-import api from '../utils/Api.js';
+import { api } from '../utils/Api.js';
 import { useApiAuth } from '../utils/ApiAuth.js';
 import {CurrentUserContext, currentUserContext} from '../contexts/CurrentUserContext.js';
 

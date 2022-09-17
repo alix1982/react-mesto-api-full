@@ -111,7 +111,7 @@ const api = new Api (
     }
   }
 );
-export default api
+export {api, BASE_URL}
 
 // поменять BASE_URL для локального сервера 'https://mesto.nomoreparties.co/v1/cohort-42'
 // 99b7a38f-d2ab-46ce-b602-198a4e9299a5
