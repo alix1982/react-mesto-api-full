@@ -1,9 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from './Api.js';
 
-// const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://api.alix576.nomorepartiesxyz.ru';
-
 export function useApiAuth () {
   let navigate = useNavigate();
   function register (password, email, urlApi, urlRoute, setIsRegisterSuccessOpen, setIsRegisterSuccess) {
@@ -31,7 +28,6 @@ export function useApiAuth () {
         return Promise.reject(`Ошибка: ${response.status}`);
       })
   }
-  // https://api.alix576.nomorepartiesxyz.ru/users/me
   // поменять `${BASE_URL}/users/me` для локального сервера 'https://auth.nomoreparties.co/users/me'
   const checkToken = () => {
     return fetch (`${BASE_URL}/users/me`, {

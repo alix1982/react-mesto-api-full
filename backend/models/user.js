@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const { regulatoryExpression } = require('../utils/regulatoryExpression');
-
-const { link, email } = regulatoryExpression;
+const { link, email } = require('../utils/regulatoryExpression');
 
 const userSchema = new mongoose.Schema({
   name: {

@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { regulatoryExpression } = require('../utils/regulatoryExpression');
-
-const { link } = regulatoryExpression;
+const { link } = require('../utils/regulatoryExpression');
 
 const {
   getUsers, getUserMe, getUserId, updateUser, updateAvatar,

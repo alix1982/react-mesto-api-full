@@ -101,7 +101,8 @@ class Api {
     this.heading.authorization = `Bearer ${token}`;
   }
 }
-
+// поменять BASE_URL для локального сервера 'https://mesto.nomoreparties.co/v1/cohort-42'
+// 99b7a38f-d2ab-46ce-b602-198a4e9299a5
 const api = new Api (
   {
     url: BASE_URL,
@@ -112,6 +113,3 @@ const api = new Api (
   }
 );
 export {api, BASE_URL}
-
-// поменять BASE_URL для локального сервера 'https://mesto.nomoreparties.co/v1/cohort-42'
-// 99b7a38f-d2ab-46ce-b602-198a4e9299a5

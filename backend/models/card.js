@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
-const { regulatoryExpression } = require('../utils/regulatoryExpression');
-
-const { link } = regulatoryExpression;
-// const regulatoryExpression = require('../utils/regulatoryExpression');
+const { link } = require('../utils/regulatoryExpression');
 
 const cardSchema = new mongoose.Schema({
   name: {
