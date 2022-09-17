@@ -93,13 +93,14 @@ app.use((err, req, res, next) => {
     next(new NoDateErrorStatus('Пользователь(карточка) не найден(а)'));
     return;
   }
+  next(new DefaultErrorStatus('На сервере произошла ошибка!'));
   if (err.statusCode) {
     res.status(err.statusCode).send({ message: err.message });
     return;
   }
-  next(new DefaultErrorStatus('На сервере произошла ошибка!'));
+  // next(new DefaultErrorStatus('На сервере произошла ошибка!'));
   // res.status(500).send({ message: 'На сервере произошла ошибка' });
-  // next();
+  next();
 });
 
 app.listen(PORT, () => {
