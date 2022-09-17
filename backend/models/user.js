@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const regulatoryExpression = require('../utils/regulatoryExpression');
+// const regulatoryExpression = require('../utils/regulatoryExpression');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,12 +19,12 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,
     required: false,
-    validate: regulatoryExpression.linkRegulatoryExpression,
+    validate: /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
   },
   email: {
     type: String,
-    validate: regulatoryExpression.emailRegulatoryExpression,
+    validate: /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i,
     required: true,
     unique: true,
   },

@@ -110,6 +110,5 @@ const api = new Api (
 );
 export default api
 
-// http://api.alix576.nomorepartiesxyz.ru/
 // https://mesto.nomoreparties.co/v1/cohort-42
 // 99b7a38f-d2ab-46ce-b602-198a4e9299a5

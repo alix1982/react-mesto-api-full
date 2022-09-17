@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const regulatoryExpression = require('../utils/regulatoryExpression');
+// const regulatoryExpression = require('../utils/regulatoryExpression');
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -11,7 +11,7 @@ const cardSchema = new mongoose.Schema({
   link: {
     type: String,
     required: true,
-    validate: regulatoryExpression.linkRegulatoryExpression,
+    validate: /https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.*/i,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
