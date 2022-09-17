@@ -129,7 +129,7 @@ function App() {
     api.deleteCardDel(card._id, 'DELETE')
       .then (() => {
         setCurrentCard(currentCard => {
-          return currentCard.filter( c => {return c._id != card._id})
+          return currentCard.filter( c => {return c._id !== card._id})
         })
         closeAllPopups()
       })
