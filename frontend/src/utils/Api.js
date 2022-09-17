@@ -1,3 +1,6 @@
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api.alix576.nomorepartiesxyz.ru';
+
 class Api {
   constructor ({url, heading})
   {
@@ -101,7 +104,7 @@ class Api {
 
 const api = new Api (
   {
-    url: 'https://api.alix576.nomorepartiesxyz.ru',
+    url: BASE_URL,
     heading: {
       authorization: `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json'
@@ -110,5 +113,5 @@ const api = new Api (
 );
 export default api
 
-// https://mesto.nomoreparties.co/v1/cohort-42
+// поменять BASE_URL для локального сервера 'https://mesto.nomoreparties.co/v1/cohort-42'
 // 99b7a38f-d2ab-46ce-b602-198a4e9299a5
