@@ -32,7 +32,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 // !
-
+console.log(regulatoryExpression);
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
