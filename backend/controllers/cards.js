@@ -3,7 +3,7 @@ const Card = require('../models/card');
 const IncorrectDataErrorStatus = require('../errors/incorrectDataErrorStatus');
 const NoDateErrorStatus = require('../errors/noDateErrorStatus');
 const ConflictId = require('../errors/conflictId');
-const DefaultErrorStatus = require('../errors/defaultErrorStatus');
+// const DefaultErrorStatus = require('../errors/defaultErrorStatus');
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
@@ -16,7 +16,8 @@ module.exports.createCard = (req, res, next) => {
         next(new IncorrectDataErrorStatus('Ошибка валидации!'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка создания'));
+      // next(new DefaultErrorStatus('Произошла ошибка создания'));
+      next(err);
     });
 };
 
@@ -54,7 +55,8 @@ module.exports.deleteCard = (req, res, next) => {
         next(new NoDateErrorStatus('Карточка не найдена'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка удалениия'));
+      // next(new DefaultErrorStatus('Произошла ошибка удалениия'));
+      next(err);
     });
 };
 
@@ -79,7 +81,8 @@ module.exports.likeCard = (req, res, next) => {
         next(new NoDateErrorStatus('Карточка не найдена'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка лайка'));
+      // next(new DefaultErrorStatus('Произошла ошибка лайка'));
+      next(err);
     });
 };
 
@@ -104,6 +107,7 @@ module.exports.dislikeCard = (req, res, next) => {
         next(new NoDateErrorStatus('Карточка не найдена'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка лайка'));
+      // next(new DefaultErrorStatus('Произошла ошибка лайка'));
+      next(err);
     });
 };

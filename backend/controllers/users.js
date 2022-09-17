@@ -7,7 +7,7 @@ const IncorrectDataErrorStatus = require('../errors/incorrectDataErrorStatus');
 const NoDateErrorStatus = require('../errors/noDateErrorStatus');
 const ConflictUser = require('../errors/conflictUser');
 const NoAuthErr = require('../errors/noAuthErr');
-const DefaultErrorStatus = require('../errors/defaultErrorStatus');
+// const DefaultErrorStatus = require('../errors/defaultErrorStatus');
 
 // const app = express();
 
@@ -38,7 +38,8 @@ module.exports.createUser = (req, res, next) => {
         next(new ConflictUser('Такой пользователь уже существует'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка'));
+      // next(new DefaultErrorStatus('Произошла ошибка'));
+      next(err);
     });
 };
 
@@ -73,7 +74,8 @@ module.exports.getUserId = (req, res, next) => {
         next(new NoDateErrorStatus('Пользователь не найден!'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка!'));
+      // next(new DefaultErrorStatus('Произошла ошибка!'));
+      next(err);
     });
 };
 
@@ -95,7 +97,8 @@ module.exports.updateUser = (req, res, next) => {
         next(new NoDateErrorStatus('Пользователь не найден!'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка!'));
+      // next(new DefaultErrorStatus('Произошла ошибка!'));
+      next(err);
     });
 };
 
@@ -117,7 +120,8 @@ module.exports.updateAvatar = (req, res, next) => {
         next(new NoDateErrorStatus('Пользователь не найден!'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка!'));
+      // next(new DefaultErrorStatus('Произошла ошибка!'));
+      next(err);
     });
 };
 
@@ -148,6 +152,7 @@ module.exports.login = (req, res, next) => {
         next(new NoAuthErr('Неправильные почта или пароль'));
         return;
       }
-      next(new DefaultErrorStatus('Произошла ошибка'));
+      // next(new DefaultErrorStatus('Произошла ошибка'));
+      next(err);
     });
 };
