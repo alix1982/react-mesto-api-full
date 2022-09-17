@@ -1,4 +1,5 @@
 .header__userInfo {
+    max-width: 500px;
     background-color: #000000;
     color: #ffffff;
     margin: 0;
@@ -11,3 +12,21 @@
     font-size: 18px;
     line-height: 22px;
   }
+
+@media screen and (max-width: 602px) {
+  .header__userInfo {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__userInfo {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

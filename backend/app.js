@@ -12,12 +12,6 @@ const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { link } = require('./utils/regulatoryExpression');
-const IncorrectDataErrorStatus = require('./errors/incorrectDataErrorStatus');
-const NoDateErrorStatus = require('./errors/noDateErrorStatus');
-const ConflictUser = require('./errors/conflictUser');
-const NoAuthErr = require('./errors/noAuthErr');
-const DefaultErrorStatus = require('./errors/defaultErrorStatus');
-const ConflictId = require('./errors/conflictId');
 
 const cors = require('./middlewares/cors');
 
@@ -69,37 +63,11 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use((err, req, res, next) => {
-  if (err.code === 11000) {
-    next(new ConflictUser('Такой пользователь уже существует'));
-    return;
-  }
-  if (err.name === 'ValidationError') {
-    next(new IncorrectDataErrorStatus('Ошибка валидации!'));
-    return;
-  }
-  if (err.name === 'CastError') {
-    next(new IncorrectDataErrorStatus('Некорректный id'));
-    return;
-  }
-  if (err.statusCode === 401) {
-    next(new NoAuthErr('Неправильные почта или пароль'));
-    return;
-  }
-  if (err.statusCode === 403) {
-    next(new ConflictId('Удаление не своей карточки'));
-    return;
-  }
-  if (err.statusCode === 404) {
-    next(new NoDateErrorStatus('Пользователь(карточка) не найден(а)'));
-    return;
-  }
-  next(new DefaultErrorStatus('На сервере произошла ошибка!'));
   if (err.statusCode) {
     res.status(err.statusCode).send({ message: err.message });
     return;
   }
-  // next(new DefaultErrorStatus('На сервере произошла ошибка!'));
-  // res.status(500).send({ message: 'На сервере произошла ошибка' });
+  res.status(500).send({ message: 'На сервере произошла ошибка' });
   next();
 });
 

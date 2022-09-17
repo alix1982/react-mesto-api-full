@@ -1,5 +1,12 @@
 .popupImg__img {
+  object-fit: contain;
   max-width: 75vw;
   max-height: 75vh;
-  object-fit: contain;
+}
+
+@media screen and (max-width: 602px) {
+  .popupImg__img {
+    max-width: 70vw;
+    max-height: 70vh;
+  }
 }

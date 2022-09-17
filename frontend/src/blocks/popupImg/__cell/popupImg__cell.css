@@ -4,12 +4,6 @@
   top: 90px;
 }
 
-@media screen and (max-width: 602px) {
-  .popupImg__cell {
-    top: 136px;
-  }
-}
-
 @media screen and (min-width: 1500px) {
   .popupImg__cell {
     top: 250px;

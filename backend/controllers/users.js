@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-// const IncorrectDataErrorStatus = require('../errors/incorrectDataErrorStatus');
+const IncorrectDataErrorStatus = require('../errors/incorrectDataErrorStatus');
 const NoDateErrorStatus = require('../errors/noDateErrorStatus');
-// const ConflictUser = require('../errors/conflictUser');
+const ConflictUser = require('../errors/conflictUser');
 const NoAuthErr = require('../errors/noAuthErr');
-// const DefaultErrorStatus = require('../errors/defaultErrorStatus');
+const DefaultErrorStatus = require('../errors/defaultErrorStatus');
 
 // const app = express();
 
@@ -29,18 +29,17 @@ module.exports.createUser = (req, res, next) => {
       };
       res.send(userRes);
     })
-    // .catch((err) => {
-    //   if (err.name === 'ValidationError') {
-    //     next(new IncorrectDataErrorStatus('Ошибка валидации'));
-    //     return;
-    //   }
-    //   if (err.code === 11000) {
-    //     next(new ConflictUser('Такой пользователь уже существует'));
-    //     return;
-    //   }
-    //   next(new DefaultErrorStatus('Произошла ошибка'));
-    // });
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new IncorrectDataErrorStatus('Ошибка валидации'));
+        return;
+      }
+      if (err.code === 11000) {
+        next(new ConflictUser('Такой пользователь уже существует'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка'));
+    });
 };
 
 module.exports.getUsers = (req, res, next) => {
@@ -65,18 +64,17 @@ module.exports.getUserId = (req, res, next) => {
       }
       res.send(user);
     })
-    // .catch((err) => {
-    //   if (err.name === 'CastError') {
-    //     next(new IncorrectDataErrorStatus('Некорректный id'));
-    //     return;
-    //   }
-    //   if (err.statusCode === 404) {
-    //     next(new NoDateErrorStatus('Пользователь не найден!'));
-    //     return;
-    //   }
-    //   next(new DefaultErrorStatus('Произошла ошибка!'));
-    // });
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new IncorrectDataErrorStatus('Некорректный id'));
+        return;
+      }
+      if (err.statusCode === 404) {
+        next(new NoDateErrorStatus('Пользователь не найден!'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка!'));
+    });
 };
 
 module.exports.updateUser = (req, res, next) => {
@@ -88,18 +86,17 @@ module.exports.updateUser = (req, res, next) => {
       }
       res.send(user);
     })
-    // .catch((err) => {
-    //   if (err.name === 'ValidationError') {
-    //     next(new IncorrectDataErrorStatus('Ошибка валидации'));
-    //     return;
-    //   }
-    //   if (err.statusCode === 404) {
-    //     next(new NoDateErrorStatus('Пользователь не найден!'));
-    //     return;
-    //   }
-    //   next(new DefaultErrorStatus('Произошла ошибка!'));
-    // });
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new IncorrectDataErrorStatus('Ошибка валидации'));
+        return;
+      }
+      if (err.statusCode === 404) {
+        next(new NoDateErrorStatus('Пользователь не найден!'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка!'));
+    });
 };
 
 module.exports.updateAvatar = (req, res, next) => {
@@ -111,18 +108,17 @@ module.exports.updateAvatar = (req, res, next) => {
       }
       res.send(user);
     })
-    // .catch((err) => {
-    //   if (err.name === 'ValidationError') {
-    //     next(new IncorrectDataErrorStatus('Ошибка валидации'));
-    //     return;
-    //   }
-    //   if (err.statusCode === 404) {
-    //     next(new NoDateErrorStatus('Пользователь не найден!'));
-    //     return;
-    //   }
-    //   next(new DefaultErrorStatus('Произошла ошибка!'));
-    // });
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new IncorrectDataErrorStatus('Ошибка валидации'));
+        return;
+      }
+      if (err.statusCode === 404) {
+        next(new NoDateErrorStatus('Пользователь не найден!'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка!'));
+    });
 };
 
 module.exports.login = (req, res, next) => {
@@ -147,12 +143,11 @@ module.exports.login = (req, res, next) => {
           res.send({ token, message: 'Всё верно!' });
         });
     })
-    // .catch((err) => {
-    //   if (err.statusCode === 401) {
-    //     next(new NoAuthErr('Неправильные почта или пароль'));
-    //     return;
-    //   }
-    //   next(new DefaultErrorStatus('Произошла ошибка'));
-    // });
-    .catch(next);
+    .catch((err) => {
+      if (err.statusCode === 401) {
+        next(new NoAuthErr('Неправильные почта или пароль'));
+        return;
+      }
+      next(new DefaultErrorStatus('Произошла ошибка'));
+    });
 };

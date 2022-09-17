@@ -38,7 +38,7 @@ function EditProfilePopup (props) {
       />
       <span className="name-input-error form__message-error">{errors.name}</span>
       <input 
-        id="work-input" className={`form__text formInfo__text formInfo__text_work ${!isValidInputs.about && 'form__text_error'}`} type="text" name="about" placeholder="Иссдедователь океана"
+        id="work-input" className={`form__text formInfo__text formInfo__text_work ${!isValidInputs.about && 'form__text_error'}`} type="text" name="about" placeholder="Исследователь океана"
         minLength="2" maxLength="200" required onChange={handleChange} value={values.about || ''}
       />
       <span className="work-input-error form__message-error">{errors.about}</span>
