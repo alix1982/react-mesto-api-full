@@ -6,7 +6,7 @@
 
 4. Необходимо добавить проверку почту, возможность добавлять карточки и аватар не по ссылке (загрузкой файла).
 
-+ [Ссылка на проект на github](https://github.com/alix1982/react-mesto-api-full)
++ [Ссылка на проект в GitHub](https://github.com/alix1982/react-mesto-api-full)
 
 ## Директории
 
