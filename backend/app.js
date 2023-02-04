@@ -25,7 +25,7 @@ app.use(requestLogger);
 
 app.use(cors);
 
-// удалить
+// тестирование сервера
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');

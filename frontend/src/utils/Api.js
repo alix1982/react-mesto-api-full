@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3000';
 const BASE_URL = 'https://api.alix576.nomorepartiesxyz.ru';
+// const BASE_URL = 'http://localhost:3001';
 
 class Api {
   constructor ({url, heading})
